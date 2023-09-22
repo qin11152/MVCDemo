@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/MVCDemo"/>
+    <qresource prefix="/qml">
+        <file>Listview.qml</file>
+    </qresource>
+</RCC>
