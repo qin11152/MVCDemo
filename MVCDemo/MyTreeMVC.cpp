@@ -1,6 +1,8 @@
 #include "MyTreeMVC.h"
 #include <qpainter.h>
 #include <qdebug.h>
+#include <qprogressbar.h>
+#include <qapplication.h>
 
 MyTreeView::MyTreeView(QWidget *parent)
     : QTreeView(parent)
@@ -368,8 +370,20 @@ void MyStyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& 
                 {
                     const QWidget* widget = option.widget;
                     int score = index.data(3).toInt();
-                    QRect scoreRect{ option.rect.x() + 20, option.rect.y() + 5, 160,40 };
-                    painter->drawText(scoreRect, Qt::AlignVCenter, QString::number(score));
+                    //QRect scoreRect{ option.rect.x() + 20, option.rect.y() + 5, 160,40 };
+                    QStyleOptionProgressBar bar;
+                    bar.rect.setRect(option.rect.x() + 20, option.rect.y() + 5, 160, 40); // 设置bar位置
+                    bar.state = QStyle::State_Enabled;
+                    bar.progress = score; // 设置对应model列的值
+                    bar.minimum = 0;
+                    bar.maximum = 100;
+                    bar.textVisible = true;
+                    bar.text = QString("%1%").arg(bar.progress);
+                    bar.textAlignment = Qt::AlignCenter;
+
+                    QProgressBar pbar;
+                    QApplication::style()->drawControl(QStyle::CE_ProgressBar, &bar, painter, &pbar);
+                    //painter->drawText(scoreRect, Qt::AlignVCenter, QString::number(score));
                 }
             }
         }

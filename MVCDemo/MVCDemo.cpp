@@ -65,7 +65,7 @@ MVCDemo::MVCDemo(QWidget *parent)
                 Student* stu = new Student();
                 stu->age = rand();
                 stu->name=QString("name%1").arg(j).toStdString();
-                stu->score = rand();
+                stu->score = rand() % 100;
                 clas->m_vecStudent.push_back(stu);
             }
             classsList.push_back(clas);
@@ -96,12 +96,13 @@ MVCDemo::MVCDemo(QWidget *parent)
         m_ptrTreeDelegate = new MyStyledItemDelegate(ui.treeView);
         ui.treeView->setItemDelegate(m_ptrTreeDelegate);
         auto heads = ui.treeView->header();
-        for (int i = 0; i < headers.size(); ++i)
-        {
-            heads->setSectionResizeMode(i, QHeaderView::Fixed);
-            heads->resizeSection(i, 200);
-        }
-        heads->resizeSection(0, 80);
+        //for (int i = 0; i < headers.size(); ++i)
+        //{
+        //    heads->setSectionResizeMode(i, QHeaderView::Fixed);
+        //    heads->resizeSection(i, 200);
+        //}
+        //heads->resizeSection(0, 80);
+        heads->resizeSection(2, 200);
     }
 
     connect(ui.treeView, &QTreeView::clicked, this, &MVCDemo::onTreeViewClicked);
