@@ -4,6 +4,7 @@
 #include "ui_MVCDemo.h"
 #include "MyListMVC.h"
 #include "MyTreeMVC.h"
+#include "MyTableMVC.h"
 
 class MVCDemo : public QWidget
 {
@@ -18,8 +19,10 @@ public slots:
 
 private:
     Ui::MVCDemoClass ui;
-    MySortModel* ptrSortModel{ nullptr };
-    MyListModel* ptrListModel{ nullptr };
+    MySortModel* m_ptrListSortModelForQML{ nullptr };
+    MyListModel* m_ptrListModelForQML{ nullptr };
     MyTreeModel* m_ptrTreeModel{ nullptr };
     MyStyledItemDelegate* m_ptrTreeDelegate{ nullptr };
+    MyTableModel* m_ptrTableModel{ nullptr };
+    MyTableDelegate* m_ptrTableDelegate{ nullptr };
 };

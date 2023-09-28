@@ -211,6 +211,7 @@ public:
 
     void setViewFilterRule(const std::map<int, QVariant>& filterMap);
     void addToModel(const AddFriendInfo& friendInfo);
+    void setDataToModel(std::vector<AddFriendInfo>& addFriendInfo);
 
 signals:
     void signalClicked(int num);
@@ -220,6 +221,6 @@ protected:
 
 private:
     ListModel* m_ptrListModel{ nullptr };
-    DelegateForListView* m_ptrDelegate{ nullptr };
+    DelegateForListView* m_ptrListDelegate{ nullptr };
     MySortModel* m_ptrSortAndFilterModel{ nullptr };
 };

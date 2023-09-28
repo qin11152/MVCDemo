@@ -366,21 +366,12 @@ MyListView::MyListView(QWidget* parent)
 
     m_ptrSortAndFilterModel = new MySortModel(this);
     m_ptrListModel = new ListModel(this);
-    m_ptrDelegate = new DelegateForListView();
+    m_ptrListDelegate = new DelegateForListView();
     m_ptrSortAndFilterModel->setSourceModel(m_ptrListModel);
-    std::vector<AddFriendInfo> vecAddFriendInfo;
-    for (int i = 0; i < 2; ++i)
-    {
-        auto tmpinfo = AddFriendInfo();
-        tmpinfo.isValid = false;
-        tmpinfo.m_strFriendId = QString::number(i);
-        tmpinfo.m_strProfileImagePath = "D:/1.png";
-        tmpinfo.m_strVerifyInfo = "dakjshdkjas";
-        vecAddFriendInfo.push_back(tmpinfo);
-    }
-    m_ptrListModel->setData(vecAddFriendInfo);
+
+    //m_ptrListModel->setData(vecAddFriendInfo);
     setModel(m_ptrSortAndFilterModel);
-    setItemDelegate(m_ptrDelegate);
+    setItemDelegate(m_ptrListDelegate);
 
     setMovement(QListView::Free);
     setDragDropMode(QAbstractItemView::DragOnly);
@@ -401,6 +392,11 @@ void MyListView::setViewFilterRule(const std::map<int, QVariant>& filterMap)
 void MyListView::addToModel(const AddFriendInfo& friendInfo)
 {
     m_ptrListModel->addData(friendInfo);
+}
+
+void MyListView::setDataToModel(std::vector<AddFriendInfo>& addFriendInfo)
+{
+    m_ptrListModel->setData(addFriendInfo);
 }
 
 void MyListView::mousePressEvent(QMouseEvent* event)

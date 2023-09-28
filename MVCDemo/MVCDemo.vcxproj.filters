@@ -46,12 +46,18 @@
     <ClCompile Include="MyTreeMVC.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MyTableMVC.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MyListMVC.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="MyTreeMVC.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MyTableMVC.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
